@@ -1,0 +1,272 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/Leaflet/Leaflet#readme">leaflet (v1.0.3)</a>
+</h1>
+<h4>JavaScript library for mobile-friendly interactive maps</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.leaflet">module leaflet</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.leaflet.expect">
+            function <span class="apidocSignatureSpan">leaflet.</span>expect
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.leaflet.expect">module leaflet.expect</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.leaflet.expect.expect">
+            function <span class="apidocSignatureSpan">leaflet.</span>expect
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.leaflet.expect.Assertion">
+            function <span class="apidocSignatureSpan">leaflet.expect.</span>Assertion
+            <span class="apidocSignatureSpan">(obj, flag, parent)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.leaflet.expect.eql">
+            function <span class="apidocSignatureSpan">leaflet.expect.</span>eql
+            <span class="apidocSignatureSpan">(actual, expected)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">leaflet.expect.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.leaflet" id="apidoc.module.leaflet">module leaflet</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.leaflet.expect" id="apidoc.element.leaflet.expect">
+        function <span class="apidocSignatureSpan">leaflet.</span>expect
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function expect(obj) {
+  return new Assertion(obj);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.leaflet.expect" id="apidoc.module.leaflet.expect">module leaflet.expect</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.leaflet.expect.expect" id="apidoc.element.leaflet.expect.expect">
+        function <span class="apidocSignatureSpan">leaflet.</span>expect
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function expect(obj) {
+  return new Assertion(obj);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.leaflet.expect.Assertion" id="apidoc.element.leaflet.expect.Assertion">
+        function <span class="apidocSignatureSpan">leaflet.expect.</span>Assertion
+        <span class="apidocSignatureSpan">(obj, flag, parent)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Assertion(obj, flag, parent) {
+  this.obj = obj;
+  this.flags = {};
+
+  if (undefined != parent) {
+    this.flags[flag] = true;
+
+    for (var i in parent.flags) {
+      if (parent.flags.hasOwnProperty(i)) {
+        this.flags[i] = true;
+      }
+    }
+  }
+
+  var $flags = flag ? flags[flag] : keys(flags)
+    , self = this
+
+  if ($flags) {
+    for (var i = 0, l = $flags.length; i &lt; l; i++) {
+      // avoid recursion
+      if (this.flags[$flags[i]]) continue;
+
+      var name = $flags[i]
+        , assertion = new Assertion(this.obj, name, this)
+
+      if ('function' == typeof Assertion.prototype[name]) {
+        // clone the function, make sure we dont touch the prot reference
+        var old = this[name];
+        this[name] = function () {
+          return old.apply(self, arguments);
+        }
+
+        for (var fn in Assertion.prototype) {
+          if (Assertion.prototype.hasOwnProperty(fn) &amp;&amp; fn != name) {
+            this[name][fn] = bind(assertion[fn], assertion);
+          }
+        }
+      } else {
+        this[name] = assertion;
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.leaflet.expect.eql" id="apidoc.element.leaflet.expect.eql">
+        function <span class="apidocSignatureSpan">leaflet.expect.</span>eql
+        <span class="apidocSignatureSpan">(actual, expected)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function eql(actual, expected) {
+  // 7.1. All identical values are equivalent, as determined by ===.
+  if (actual === expected) {
+    return true;
+  } else if ('undefined' != typeof Buffer
+      &amp;&amp; Buffer.isBuffer(actual) &amp;&amp; Buffer.isBuffer(expected)) {
+    if (actual.length != expected.length) return false;
+
+    for (var i = 0; i &lt; actual.length; i++) {
+      if (actual[i] !== expected[i]) return false;
+    }
+
+    return true;
+
+  // 7.2. If the expected value is a Date object, the actual value is
+  // equivalent if it is also a Date object that refers to the same time.
+  } else if (actual instanceof Date &amp;&amp; expected instanceof Date) {
+    return actual.getTime() === expected.getTime();
+
+  // 7.3. Other pairs that do not both pass typeof value == "object",
+  // equivalence is determined by ==.
+  } else if (typeof actual != 'object' &amp;&amp; typeof expected != 'object') {
+    return actual == expected;
+
+  // 7.4. For all other Object pairs, including Array objects, equivalence is
+  // determined by having the same number of owned properties (as verified
+  // with Object.prototype.hasOwnProperty.call), the same set of keys
+  // (although not necessarily the same order), equivalent values for every
+  // corresponding key, and an identical "prototype" property. Note: this
+  // accounts for both named and indexed properties on Arrays.
+  } else {
+    return objEquiv(actual, expected);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * Checks if the obj sortof equals another.
+ *
+ * @api public
+ */
+
+Assertion.prototype.eql = function (obj) {
+  this.assert(
+      expect.<span class="apidocCodeKeywordSpan">eql</span>(obj, this.obj)
+    , function(){ return 'expected ' + i(this.obj) + ' to sort of equal ' + i(obj) }
+    , function(){ return 'expected ' + i(this.obj) + ' to sort of not equal ' + i(obj) });
+  return this;
+};
+
+/**
+ * Assert within start to finish (inclusive).
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
