@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"leaflet",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "leaflet",
+    "description": "api documentation for [leaflet (v1.0.3)](https://github.com/Leaflet/Leaflet#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-leaflet.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-leaflet) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-leaflet.svg)](https://travis-ci.org/npmdoc/node-npmdoc-leaflet)",
     "devDependencies": {
-        "leaflet": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "leaflet": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-leaflet",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-leaflet",
+    "keywords": [
+        "documentation",
+        "leaflet"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_leaflet.js",
+    "name": "npmdoc-leaflet",
+    "nameAlias": "npmdoc_leaflet",
+    "nameOriginal": "npmdoc-leaflet",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-leaflet.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
