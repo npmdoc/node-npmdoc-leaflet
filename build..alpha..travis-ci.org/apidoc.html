@@ -70,6 +70,15 @@
 
         </li>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.leaflet.karma_conf">
+            function <span class="apidocSignatureSpan">leaflet.</span>karma_conf
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.leaflet.expect">module leaflet.expect</a><ol>
@@ -109,6 +118,19 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.leaflet.karma_conf">module leaflet.karma_conf</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.leaflet.karma_conf.karma_conf">
+            function <span class="apidocSignatureSpan">leaflet.</span>karma_conf
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -124,6 +146,110 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function expect(obj) {
   return new Assertion(obj);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.leaflet.karma_conf" id="apidoc.element.leaflet.karma_conf">
+        function <span class="apidocSignatureSpan">leaflet.</span>karma_conf
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">karma_conf = function (config) {
+
+	var libSources = require(__dirname + &#x27;/../build/build.js&#x27;).getFiles();
+
+	var files = [
+		&#x22;spec/sinon.js&#x22;,
+		&#x22;spec/expect.js&#x22;
+	].concat(libSources, [
+		&#x22;spec/after.js&#x22;,
+		&#x22;node_modules/happen/happen.js&#x22;,
+		&#x22;node_modules/prosthetic-hand/dist/prosthetic-hand.js&#x22;,
+		&#x22;spec/suites/SpecHelper.js&#x22;,
+		&#x22;spec/suites/**/*.js&#x22;,
+		&#x22;dist/*.css&#x22;,
+		{pattern: &#x22;dist/images/*.png&#x22;, included: false, serve: true}
+	]);
+
+	config.set({
+		// base path, that will be used to resolve files and exclude
+		basePath: &#x27;../&#x27;,
+
+		plugins: [
+			&#x27;karma-mocha&#x27;,
+			&#x27;karma-coverage&#x27;,
+			&#x27;karma-phantomjs-launcher&#x27;,
+			&#x27;karma-chrome-launcher&#x27;,
+			&#x27;karma-safari-launcher&#x27;,
+			&#x27;karma-firefox-launcher&#x27;],
+
+		// frameworks to use
+		frameworks: [&#x27;mocha&#x27;],
+
+		// list of files / patterns to load in the browser
+		files: files,
+		proxies: {
+			&#x27;/base/dist/images/&#x27;: &#x27;dist/images/&#x27;
+		},
+		exclude: [],
+
+		// test results reporter to use
+		// possible values: &#x27;dots&#x27;, &#x27;progress&#x27;, &#x27;junit&#x27;, &#x27;growl&#x27;, &#x27;coverage&#x27;
+		reporters: [&#x27;dots&#x27;],
+
+		// web server port
+		port: 9876,
+
+		// level of logging
+		// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+		logLevel: config.LOG_WARN,
+
+		// enable / disable colors in the output (reporters and logs)
+		colors: true,
+
+		// enable / disable watching file and executing tests whenever any file changes
+		autoWatch: false,
+
+		// Start these browsers, currently available:
+		// - Chrome
+		// - ChromeCanary
+		// - Firefox
+		// - Opera
+		// - Safari (only Mac)
+		// - PhantomJS
+		// - IE (only Windows)
+		browsers: [&#x27;PhantomJSCustom&#x27;],
+
+		customLaunchers: {
+			&#x27;PhantomJSCustom&#x27;: {
+				base: &#x27;PhantomJS&#x27;,
+				flags: [&#x27;--load-images=true&#x27;],
+				options: {
+					onCallback: function (data) {
+						if (data.render) {
+							page.render(data.render);
+						}
+					}
+				}
+			}
+		},
+
+		// If browser does not capture in given timeout [ms], kill it
+		captureTimeout: 5000,
+
+		// Workaround for PhantomJS random DISCONNECTED error
+		browserDisconnectTimeout: 10000, // default 2000
+		browserDisconnectTolerance: 1, // default 0
+
+		// Continuous Integration mode
+		// if true, it capture browsers, run tests and exit
+		singleRun: true
+	});
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -266,6 +392,115 @@ Assertion.prototype.eql = function (obj) {
     </ul>
 
 
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.leaflet.karma_conf" id="apidoc.module.leaflet.karma_conf">module leaflet.karma_conf</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.leaflet.karma_conf.karma_conf" id="apidoc.element.leaflet.karma_conf.karma_conf">
+        function <span class="apidocSignatureSpan">leaflet.</span>karma_conf
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">karma_conf = function (config) {
+
+	var libSources = require(__dirname + &#x27;/../build/build.js&#x27;).getFiles();
+
+	var files = [
+		&#x22;spec/sinon.js&#x22;,
+		&#x22;spec/expect.js&#x22;
+	].concat(libSources, [
+		&#x22;spec/after.js&#x22;,
+		&#x22;node_modules/happen/happen.js&#x22;,
+		&#x22;node_modules/prosthetic-hand/dist/prosthetic-hand.js&#x22;,
+		&#x22;spec/suites/SpecHelper.js&#x22;,
+		&#x22;spec/suites/**/*.js&#x22;,
+		&#x22;dist/*.css&#x22;,
+		{pattern: &#x22;dist/images/*.png&#x22;, included: false, serve: true}
+	]);
+
+	config.set({
+		// base path, that will be used to resolve files and exclude
+		basePath: &#x27;../&#x27;,
+
+		plugins: [
+			&#x27;karma-mocha&#x27;,
+			&#x27;karma-coverage&#x27;,
+			&#x27;karma-phantomjs-launcher&#x27;,
+			&#x27;karma-chrome-launcher&#x27;,
+			&#x27;karma-safari-launcher&#x27;,
+			&#x27;karma-firefox-launcher&#x27;],
+
+		// frameworks to use
+		frameworks: [&#x27;mocha&#x27;],
+
+		// list of files / patterns to load in the browser
+		files: files,
+		proxies: {
+			&#x27;/base/dist/images/&#x27;: &#x27;dist/images/&#x27;
+		},
+		exclude: [],
+
+		// test results reporter to use
+		// possible values: &#x27;dots&#x27;, &#x27;progress&#x27;, &#x27;junit&#x27;, &#x27;growl&#x27;, &#x27;coverage&#x27;
+		reporters: [&#x27;dots&#x27;],
+
+		// web server port
+		port: 9876,
+
+		// level of logging
+		// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+		logLevel: config.LOG_WARN,
+
+		// enable / disable colors in the output (reporters and logs)
+		colors: true,
+
+		// enable / disable watching file and executing tests whenever any file changes
+		autoWatch: false,
+
+		// Start these browsers, currently available:
+		// - Chrome
+		// - ChromeCanary
+		// - Firefox
+		// - Opera
+		// - Safari (only Mac)
+		// - PhantomJS
+		// - IE (only Windows)
+		browsers: [&#x27;PhantomJSCustom&#x27;],
+
+		customLaunchers: {
+			&#x27;PhantomJSCustom&#x27;: {
+				base: &#x27;PhantomJS&#x27;,
+				flags: [&#x27;--load-images=true&#x27;],
+				options: {
+					onCallback: function (data) {
+						if (data.render) {
+							page.render(data.render);
+						}
+					}
+				}
+			}
+		},
+
+		// If browser does not capture in given timeout [ms], kill it
+		captureTimeout: 5000,
+
+		// Workaround for PhantomJS random DISCONNECTED error
+		browserDisconnectTimeout: 10000, // default 2000
+		browserDisconnectTolerance: 1, // default 0
+
+		// Continuous Integration mode
+		// if true, it capture browsers, run tests and exit
+		singleRun: true
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
 
 
 </div>
