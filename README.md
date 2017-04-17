@@ -1,9 +1,11 @@
 # api documentation for  [leaflet (v1.0.3)](https://github.com/Leaflet/Leaflet#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-leaflet.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-leaflet) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-leaflet.svg)](https://travis-ci.org/npmdoc/node-npmdoc-leaflet)
 #### JavaScript library for mobile-friendly interactive maps
 
-[![NPM](https://nodei.co/npm/leaflet.png?downloads=true)](https://www.npmjs.com/package/leaflet)
+[![NPM](https://nodei.co/npm/leaflet.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/leaflet)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-leaflet/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-leaflet_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-leaflet/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-leaflet/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-leaflet/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-leaflet/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-leaflet/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-leaflet/build/screenCapture.npmPackageListing.svg)
 
@@ -87,25 +89,20 @@
     "main": "dist/leaflet-src.js",
     "maintainers": [
         {
-            "name": "ivansanchez",
-            "email": "ivan@sanchezortega.es"
+            "name": "ivansanchez"
         },
         {
-            "name": "liedman",
-            "email": "per@liedman.net"
+            "name": "liedman"
         },
         {
-            "name": "mourner",
-            "email": "agafonkin@gmail.com"
+            "name": "mourner"
         },
         {
-            "name": "ybon",
-            "email": "yb@enix.org"
+            "name": "ybon"
         }
     ],
     "name": "leaflet",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/Leaflet/Leaflet.git"
@@ -118,162 +115,6 @@
     "style": "dist/leaflet.css",
     "version": "1.0.3"
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module leaflet](#apidoc.module.leaflet)
-1.  [function <span class="apidocSignatureSpan">leaflet.</span>expect (obj)](#apidoc.element.leaflet.expect)
-
-#### [module leaflet.expect](#apidoc.module.leaflet.expect)
-1.  [function <span class="apidocSignatureSpan">leaflet.</span>expect (obj)](#apidoc.element.leaflet.expect.expect)
-1.  [function <span class="apidocSignatureSpan">leaflet.expect.</span>Assertion (obj, flag, parent)](#apidoc.element.leaflet.expect.Assertion)
-1.  [function <span class="apidocSignatureSpan">leaflet.expect.</span>eql (actual, expected)](#apidoc.element.leaflet.expect.eql)
-1.  string <span class="apidocSignatureSpan">leaflet.expect.</span>version
-
-
-
-# <a name="apidoc.module.leaflet"></a>[module leaflet](#apidoc.module.leaflet)
-
-#### <a name="apidoc.element.leaflet.expect"></a>[function <span class="apidocSignatureSpan">leaflet.</span>expect (obj)](#apidoc.element.leaflet.expect)
-- description and source-code
-```javascript
-function expect(obj) {
-  return new Assertion(obj);
-}
-```
-- example usage
-```shell
-n/a
-```
-
-
-
-# <a name="apidoc.module.leaflet.expect"></a>[module leaflet.expect](#apidoc.module.leaflet.expect)
-
-#### <a name="apidoc.element.leaflet.expect.expect"></a>[function <span class="apidocSignatureSpan">leaflet.</span>expect (obj)](#apidoc.element.leaflet.expect.expect)
-- description and source-code
-```javascript
-function expect(obj) {
-  return new Assertion(obj);
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.leaflet.expect.Assertion"></a>[function <span class="apidocSignatureSpan">leaflet.expect.</span>Assertion (obj, flag, parent)](#apidoc.element.leaflet.expect.Assertion)
-- description and source-code
-```javascript
-function Assertion(obj, flag, parent) {
-  this.obj = obj;
-  this.flags = {};
-
-  if (undefined != parent) {
-    this.flags[flag] = true;
-
-    for (var i in parent.flags) {
-      if (parent.flags.hasOwnProperty(i)) {
-        this.flags[i] = true;
-      }
-    }
-  }
-
-  var $flags = flag ? flags[flag] : keys(flags)
-    , self = this
-
-  if ($flags) {
-    for (var i = 0, l = $flags.length; i < l; i++) {
-      // avoid recursion
-      if (this.flags[$flags[i]]) continue;
-
-      var name = $flags[i]
-        , assertion = new Assertion(this.obj, name, this)
-
-      if ('function' == typeof Assertion.prototype[name]) {
-        // clone the function, make sure we dont touch the prot reference
-        var old = this[name];
-        this[name] = function () {
-          return old.apply(self, arguments);
-        }
-
-        for (var fn in Assertion.prototype) {
-          if (Assertion.prototype.hasOwnProperty(fn) && fn != name) {
-            this[name][fn] = bind(assertion[fn], assertion);
-          }
-        }
-      } else {
-        this[name] = assertion;
-      }
-    }
-  }
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.leaflet.expect.eql"></a>[function <span class="apidocSignatureSpan">leaflet.expect.</span>eql (actual, expected)](#apidoc.element.leaflet.expect.eql)
-- description and source-code
-```javascript
-function eql(actual, expected) {
-  // 7.1. All identical values are equivalent, as determined by ===.
-  if (actual === expected) {
-    return true;
-  } else if ('undefined' != typeof Buffer
-      && Buffer.isBuffer(actual) && Buffer.isBuffer(expected)) {
-    if (actual.length != expected.length) return false;
-
-    for (var i = 0; i < actual.length; i++) {
-      if (actual[i] !== expected[i]) return false;
-    }
-
-    return true;
-
-  // 7.2. If the expected value is a Date object, the actual value is
-  // equivalent if it is also a Date object that refers to the same time.
-  } else if (actual instanceof Date && expected instanceof Date) {
-    return actual.getTime() === expected.getTime();
-
-  // 7.3. Other pairs that do not both pass typeof value == "object",
-  // equivalence is determined by ==.
-  } else if (typeof actual != 'object' && typeof expected != 'object') {
-    return actual == expected;
-
-  // 7.4. For all other Object pairs, including Array objects, equivalence is
-  // determined by having the same number of owned properties (as verified
-  // with Object.prototype.hasOwnProperty.call), the same set of keys
-  // (although not necessarily the same order), equivalent values for every
-  // corresponding key, and an identical "prototype" property. Note: this
-  // accounts for both named and indexed properties on Arrays.
-  } else {
-    return objEquiv(actual, expected);
-  }
-}
-```
-- example usage
-```shell
-...
- * Checks if the obj sortof equals another.
- *
- * @api public
- */
-
-Assertion.prototype.eql = function (obj) {
-  this.assert(
-      expect.eql(obj, this.obj)
-    , function(){ return 'expected ' + i(this.obj) + ' to sort of equal ' + i(obj) }
-    , function(){ return 'expected ' + i(this.obj) + ' to sort of not equal ' + i(obj) });
-  return this;
-};
-
-/**
- * Assert within start to finish (inclusive).
-...
 ```
 
 
