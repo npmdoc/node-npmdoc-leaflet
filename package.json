@@ -1,7 +1,7 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
     "buildNpmdoc": "leaflet",
-    "description": "api documentation for [leaflet (v1.0.3)](https://github.com/Leaflet/Leaflet#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-leaflet.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-leaflet) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-leaflet.svg)](https://travis-ci.org/npmdoc/node-npmdoc-leaflet)",
+    "description": "#### basic api documentation for  [leaflet (v1.0.3)](https://github.com/Leaflet/Leaflet#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-leaflet.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-leaflet) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-leaflet.svg)](https://travis-ci.org/npmdoc/node-npmdoc-leaflet)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "leaflet": "*",
@@ -36,5 +36,5 @@
         "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
         "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
-    "version": "0.0.2"
+    "version": "2017.4.26"
 }

@@ -1,4 +1,7 @@
-# api documentation for  [leaflet (v1.0.3)](https://github.com/Leaflet/Leaflet#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-leaflet.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-leaflet) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-leaflet.svg)](https://travis-ci.org/npmdoc/node-npmdoc-leaflet)
+# npmdoc-leaflet
+
+#### basic api documentation for  [leaflet (v1.0.3)](https://github.com/Leaflet/Leaflet#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-leaflet.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-leaflet) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-leaflet.svg)](https://travis-ci.org/npmdoc/node-npmdoc-leaflet)
+
 #### JavaScript library for mobile-friendly interactive maps
 
 [![NPM](https://nodei.co/npm/leaflet.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/leaflet)
@@ -113,7 +116,8 @@
         "test": "jake test"
     },
     "style": "dist/leaflet.css",
-    "version": "1.0.3"
+    "version": "1.0.3",
+    "bin": {}
 }
 ```
 
